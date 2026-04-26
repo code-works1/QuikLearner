@@ -1,0 +1,43 @@
+controller:
+  serviceType: ClusterIP
+  servicePort: 8080
+  targetPort: 8080
+
+  admin:
+    username: admin
+    password: ChangeMe@123
+
+  resources:
+    requests:
+      cpu: "500m"
+      memory: "1Gi"
+    limits:
+      cpu: "1"
+      memory: "2Gi"
+
+  installPlugins:
+    - kubernetes
+    - workflow-aggregator
+    - git
+    - configuration-as-code
+    - credentials
+    - blueocean
+
+  ingress:
+    enabled: false
+
+persistence:
+  enabled: true
+  storageClass: gp3
+  size: 20Gi
+  accessMode: ReadWriteOnce
+
+agent:
+  enabled: true
+
+rbac:
+  create: true
+
+serviceAccount:
+  create: true
+  name: jenkins

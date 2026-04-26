@@ -1,0 +1,29 @@
+artifactory:
+  service:
+    type: ClusterIP
+
+  persistence:
+    enabled: true
+    storageClassName: gp3
+    size: 50Gi
+
+  resources:
+    requests:
+      cpu: "1"
+      memory: "2Gi"
+    limits:
+      cpu: "2"
+      memory: "4Gi"
+
+nginx:
+  enabled: true
+  service:
+    type: ClusterIP
+
+postgresql:
+  enabled: true
+  primary:
+    persistence:
+      enabled: true
+      storageClass: gp3
+      size: 20Gi
